@@ -1,0 +1,22 @@
+{
+  "name": "@accesoqa/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "db:init": "tsx src/db/init-cli.ts"
+  },
+  "dependencies": {
+    "@accesoqa/shared": "*",
+    "@axe-core/playwright": "^4.14.0",
+    "fastify": "^5.12.7",
+    "playwright": "^1.64.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "tsx": "^4.20.6"
+  }
+}

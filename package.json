@@ -1,0 +1,39 @@
+{
+  "name": "accesoqa",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma local de auditoría de accesibilidad web",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "apps/fixture",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web,fixture -c blue,green,yellow \"npm:dev:api\" \"npm:dev:web\" \"npm:dev:fixture\"",
+    "dev:api": "npm --workspace @accesoqa/api run dev",
+    "dev:web": "npm --workspace @accesoqa/web run dev",
+    "dev:fixture": "npm --workspace @accesoqa/fixture run dev",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present && tsc --noEmit -p scripts/tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "db:init": "npm --workspace @accesoqa/api run db:init",
+    "start": "concurrently -k -n api,web,fixture \"node apps/api/dist/server.js\" \"npm --workspace @accesoqa/web run preview\" \"npm --workspace @accesoqa/fixture run preview\"",
+    "test:production": "tsx scripts/verify-production.ts",
+    "test:unit": "vitest run apps/api/src/db/migrations.test.ts apps/api/src/audit/browser.test.ts apps/web/src/api.test.ts",
+    "test:integration": "vitest run apps/api/src/server.test.ts apps/api/src/audit/audit.test.ts apps/api/src/audit/flow.test.ts apps/api/src/audit/history.test.ts apps/api/src/audit/ui.test.ts apps/api/src/audit/browser-resources.test.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^10.13.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.vite/
+.playwright/
+**/data/*.sqlite*
+data/reports/
+data/screenshots/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+
+# Datos y evidencia de uso local
+data/
+*.sqlite*
+*.log
