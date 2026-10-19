@@ -1,5 +1,7 @@
 # AccesoQA — MVP local
 
+![Portada de AccesoQA: panel de auditorías en escritorio y móvil](docs/images/accesoqa-portada.png)
+
 Audita páginas y flujos de una aplicación local con **Chromium, Playwright, axe-core y SQLite**. Incluye proyectos, pasos declarativos, puntos de control, historial, comparación conservadora e informes JSON/HTML. Los hallazgos proceden de análisis reales. No calcula puntuaciones ni declara cumplimiento WCAG.
 
 ## Requisitos
